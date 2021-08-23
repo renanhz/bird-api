@@ -1,2 +1,4 @@
-package com.one.digitalinnovation.bird.controllers;public class BirdController {
+package com.one.digitalinnovation.bird.controllers;
+
+public class BirdController {
 }
