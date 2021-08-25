@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface BirdMapper {
 
-    Bird toModel(BirdDTO birdDTO);
+    Bird toModel(BirdDTO dto);
 
-    BirdDTO toDTO(Bird bird);
+    BirdDTO toDTO(Bird dto);
 }

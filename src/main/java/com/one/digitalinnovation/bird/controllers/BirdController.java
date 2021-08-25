@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("v1/bird")
@@ -23,5 +24,10 @@ public class BirdController {
     @ResponseStatus(HttpStatus.CREATED)
     public MessageResponseDTO create(@RequestBody @Valid BirdDTO birdDTO) {
         return birdService.create(birdDTO);
+    }
+
+    @GetMapping
+    public List<BirdDTO> listAll() {
+        return birdService.listAll();
     }
 }

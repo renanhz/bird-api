@@ -9,6 +9,9 @@ import org.aspectj.bridge.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class BirdService {
 
@@ -29,6 +32,11 @@ public class BirdService {
         MessageResponseDTO messageResponse = createMessageResponse("Bird created with ID: ", savedBird.getId());
 
         return messageResponse;
+    }
+
+    public List<BirdDTO> listAll() {
+        List<Bird> birds = birdRepository.findAll();
+        return birds.stream().map(birdMapper::toDTO).collect(Collectors.toList());
     }
 
     private MessageResponseDTO createMessageResponse(String message, Long id) {
