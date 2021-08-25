@@ -43,4 +43,10 @@ public class BirdController {
     public MessageResponseDTO update(@PathVariable Long id, @RequestBody @Valid BirdDTO birdDTO) throws BirdNotFoundException {
         return birdService.update(id, birdDTO);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public MessageResponseDTO deleteById(@PathVariable Long id) throws BirdNotFoundException{
+        return birdService.deleteById(id);
+    }
 }

@@ -55,6 +55,14 @@ public class BirdService {
         return createMessageResponse("Bird updated with ID: ", savedBird.getId());
     }
 
+    public MessageResponseDTO deleteById(Long id) throws BirdNotFoundException {
+        birdRepository.findById(id).orElseThrow(() -> new BirdNotFoundException(id));
+
+        birdRepository.deleteById(id);
+
+        return createMessageResponse("Bird deleted with id: ", id);
+    }
+
     private MessageResponseDTO createMessageResponse(String message, Long id) {
         return MessageResponseDTO.builder()
                 .message(message + id)
