@@ -2,6 +2,7 @@ package com.one.digitalinnovation.bird.controllers;
 
 import com.one.digitalinnovation.bird.dto.request.BirdDTO;
 import com.one.digitalinnovation.bird.dto.response.MessageResponseDTO;
+import com.one.digitalinnovation.bird.exceptions.BirdNotFoundException;
 import com.one.digitalinnovation.bird.services.BirdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,5 +30,17 @@ public class BirdController {
     @GetMapping
     public List<BirdDTO> listAll() {
         return birdService.listAll();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public BirdDTO findById(@PathVariable Long id) throws BirdNotFoundException {
+        return birdService.findById(id);
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public MessageResponseDTO update(@PathVariable Long id, @RequestBody @Valid BirdDTO birdDTO) throws BirdNotFoundException {
+        return birdService.update(id, birdDTO);
     }
 }
